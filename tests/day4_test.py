@@ -76,19 +76,19 @@ class TestHeightValidity(unittest.TestCase):
 class TestHairColorValidity(unittest.TestCase):
     def test_haircolor_valid(self):
         hcl = "#123abc"
-        result = hair_color_pid_check(hcl)
+        result = hair_color_pid_check("hcl", hcl)
         self.assertTrue(
             result, "Hair color with leading pound sign (#) AND six characters 0-9 or a-f shouldn't be invalid.")
 
     def test_haircolor_invalid_char(self):
         hcl = "#123abz"
-        result = hair_color_pid_check(hcl)
+        result = hair_color_pid_check("hcl", hcl)
         self.assertFalse(
             result, "Hair color with leading pound sign (#) but including g-z within the following six characters should be invalid.")
 
     def test_haircolor_invalid_format(self):
         hcl = "123abc"
-        result = hair_color_pid_check(hcl)
+        result = hair_color_pid_check("hcl", hcl)
         self.assertFalse(
             result, "Hair color without leading pound sign (#) should be invalid.")
 
